@@ -1,5 +1,10 @@
 # AIRE - Automated Inspection and Recognision Engine
 
+## Authors
+
+Guillermo Román Ferrero @hartek
+Javier Gutiérrez Navío @megavexus
+
 ## Abstract
 
 In a modern digital society in which the use of mobile terminals is extended by virtually the entire population in most regions, protection of the privacy is a crucial issue. 
