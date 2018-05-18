@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block _js %}
+{{block.super}}
+<script type="text/javascript" src="/static/js/list.js"></script>
+{% endblock _js %}
+
+{% block breadcrumb %}
+    <li><a href="/airprofiling/">Home</a> <span class="divider"></span></li>
+    <li class="active">Listado</li>
+{% endblock breadcrumb %}
+
+{% block main-content %}
+    <div class="panel panel-default panel-table">
+        <div class="panel-body">
+            {% include "list_panels/table.html" %}
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <ul class="pagination">
+                    {% if max_page > 1 %}
+                    <li><a href="#">&laquo;</a></li>
+                    {% for page in pages %}
+                    <li><a onclick="paginateTable('{{page}}')">{{page}}</a></li>
+                    {% endfor %}
+                    <li><a href="#">&raquo;</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock main-content %}

@@ -1,0 +1,58 @@
+<div class="page-sidebar page-sidebar-fixed scroll mCustomScrollbar _mCS_1 mCS-autoHide" style="height: 897px;">
+    <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" tabindex="0">
+        <div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
+            <!-- START X-NAVIGATION -->
+            <ul class="x-navigation">
+
+                <li class="xn-profile">
+
+                    <div class="profile">
+                        <div class="profile-image">
+                        <a href="/airprofiling/home">
+                            <img src="/static/img/aire_logotipo.png" alt="John Doe" class="mCS_img_loaded" id="aire_logo_menu" href="airprofiling/home">
+                        </a>
+                        </div>
+                        <div class="profile-data">
+                            <div class="profile-data-name">Inspector de capturas de red</div>
+                            <div class="profile-data-title">Prueba de concepto</div>
+                        </div>
+                        <div class="profile-controls">
+                        </div>
+                    </div>
+                </li>
+                <li class="xn-title">Menú de navegación</li>
+                <li class="xn-text{% if idPage == 'dashboard' %} active{% endif %}">
+                    <a href="/airprofiling/">
+                        <span class="fa fa-dashboard"></span>
+                        <span class="xn-text">Dashboard</span>
+                    </a>
+                </li>
+                <!-- LIST -->
+                <li class="xn-text{% if idPage == 'list' or previous_page == 'list' %} active{% endif %}">
+                    <a href="/airprofiling/list/">
+                        <span class="fa fa-list"></span>
+                        <span class="xn-text">Listado de capturas</span>
+                    </a>
+                </li>
+                <li class="xn-openable{% if idPage == 'searcher' or previous_page == 'searcher' %} active{% endif %}">
+                    <a href="/airprofiling/search/">
+                        <span class="fa fa-search"></span>
+                        <span class="xn-text">Buscador</span>
+                    </a>
+                </li>
+
+
+            </ul>
+            <!-- END X-NAVIGATION -->
+        </div>
+        <div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: block;">
+            <div class="mCSB_draggerContainer">
+                <div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; height: 885px; top: 0px; display: block; max-height: 887px;"
+                    oncontextmenu="return false;">
+                    <div class="mCSB_dragger_bar" style="line-height: 30px;"></div>
+                </div>
+                <div class="mCSB_draggerRail"></div>
+            </div>
+        </div>
+    </div>
+</div>

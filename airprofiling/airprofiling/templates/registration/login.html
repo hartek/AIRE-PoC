@@ -1,0 +1,52 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Login" %}{% endblock %}
+{% block content_body %}
+{% url 'auth_password_reset' as auth_pwd_reset_url %}
+{% url 'registration_register' as register_url %}
+
+{% if form.errors %}
+<p>{% blocktrans %}Your username and password didn't match. Please try again.{% endblocktrans %}</p>
+{% endif %}
+{% block sidebar %}{% endblock sidebar %}
+{% block header %}{% endblock header %}
+{% block _js_plugins %}{% endblock _js_plugins %}
+
+<div class="login-container" style="height:100vh;">
+        
+    <div class="login-box animated fadeInDown">
+        <div class="login-logo"></div>
+        <div class="login-body">
+            <div class="login-title"><strong>Welcome</strong>, Please login</div>
+            <form method="post" action="{% url 'login' %}" class="form-horizontal" method="post">{% csrf_token %}
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="text" class="form-control" placeholder="Username" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" autocomplete="off" name="username" required="" id="id_username" maxlength="254" autofocus="">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="password" class="form-control" placeholder="Password" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" autocomplete="off" name="password" required="" id="id_password">
+                </div>
+            </div>
+            <div class="form-group">                
+                <div class="col-md-6">
+                    <a href="{{ auth_pwd_reset_url }}" class="btn btn-link btn-block">Forgot your password?</a>
+                </div>
+                <div class="col-md-6">
+                    <input class="btn btn-info btn-block" type="submit" value="Log In" />                    
+                </div>
+            </div>
+            <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+        </div>
+        <div class="login-footer">
+            <div class="pull-left">
+                © 2017 AirProfiling
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock content_body %}

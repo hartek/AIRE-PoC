@@ -1,0 +1,4 @@
+HOST = '127.0.0.1'
+ELASTIC_PORT = '9200'
+KIBANA_PORT = '5601'
+INDEX = "airprofiling"

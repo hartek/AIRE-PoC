@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block _js %}
+{{block.super}}
+<script type="text/javascript" src="/static/js/search.js"></script>
+{% endblock _js %}
+
+{% block breadcrumb %}
+    <li><a href="/airprofiling/">Home</a> <span class="divider"></span></li>
+    <li class="active">Buscador</li>
+{% endblock breadcrumb %}
+
+{% block main-content %}
+    <div class="row">
+        {% include "search_panels/filters.html" %}
+                
+        <div class="panel panel-default panel-table">
+            <div class="panel-body" id="table_container">
+                {% include "search_panels/table.html" %}
+        </div>
+    </div>
+
+{% endblock main-content %}

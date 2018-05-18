@@ -1,0 +1,16 @@
+*.pyc
+*.pcap
+env*
+pyenv.cfg
+airprofiling/airprofiling/__pycache__*
+airprofiling/pcapfiles/__pycache__*
+airprofiling/uploads/
+*migrations*
+.vscode
+venv
+uploads
+airprofiling/db.sqlite3
+*db.sqlite3-journalz
+*.log
+*__pycache__*
+*.info

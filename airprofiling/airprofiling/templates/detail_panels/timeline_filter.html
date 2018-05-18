@@ -1,0 +1,64 @@
+
+<div class="row stacked">
+    <div class="col-md-12">
+        <div class="input-group push-down-10">
+            <span class="input-group-addon"><span class="fa fa-search"></span></span>
+            <input type="text" id="search_term_large" class="form-control" placeholder="Keywords..." value="{{search_term}}">
+            <div class="input-group-btn">
+                <button class="btn btn-primary" onclick="loadHtmlOfTimeline()">Search</button>
+            </div>
+        </div>
+        <!--
+       
+    -->
+    </div>
+
+    <div class="col-md-12">    
+        <div class="col-md-6 pull-left input-daterange input-group" id="datepicker">
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            <input type="text" class="datepicker input-sm form-control" name="init_date">
+            
+            <span class="input-group-addon"> - </span>
+            
+            <input type="text" class="datepicker input-sm form-control" name="end_date">
+            <span class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+            </span>
+        </div>        
+        
+        <div class="col-md-6 pull-right push-down-10">
+                
+            <div class="col-md-6 input-group pull-left" >
+                <span class="input-group-addon">Páginas web visitadas:</span>                        
+                <select class="form-control" id="webpages_filter">
+                    <option value="all" selected>Todas</option>
+                    {% for option in webpages_filters %}
+                    <option value="{{option.value}}" {% if os == option.value %}selected{% endif %}>
+                        {% if option.fa|length > 0 %}
+                        <i class="fa {{option.fa}}"></i>
+                        {% endif %}
+                        {{option.title}}
+                    </option>
+                    {% endfor %}
+                    <option value="none">Ninguna</option>
+                </select>
+            </div>
+        
+            <div class="col-md-6 input-group pull-right">
+                <span class="input-group-addon">Aplicaciones instaladas:</span>                        
+                <select class="form-control" id="apps_filter">
+                    <option value="all" selected>Todas</option>                        
+                    {% for option in apps_filters %}
+                    <option value="{{option.value}}" {% if apps == option.value %}selected{% endif %}>
+                        {% if option.fa|length > 0 %}
+                        <i class="fa {{option.fa}}"></i>
+                        {% endif %}
+                        {{option.title}}
+                    </option>
+                    {% endfor %}
+                    <option value="none">Ninguna</option>                    
+                </select>
+            </div>
+        </div>                                  
+    </div>
+</div>

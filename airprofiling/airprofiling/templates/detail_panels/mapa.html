@@ -1,0 +1,14 @@
+
+<div class="row">  
+    <div class="panel panel-primary">
+        <div class = "panel-heading">
+            <h2 class = "panel-title">
+                Mapa de geolocalización de las conexiones
+            </h2>
+        </div>
+        <div class="panel-body">
+            <iframe src="http://{{kibana_host}}:{{kibana_port}}/app/kibana#/visualize/edit/664c5ed0-8b13-11e7-9aa0-7d4ec2d207b7?embed=true&_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now-20y,mode:quick,to:now))&_a=(filters:!(('$state':(store:appState),meta:(alias:!n,disabled:!f,index:airprofiling,key:_id,negate:!f,type:phrase,value:'{{mac}}'),query:(match:(_id:(query:'{{mac}}',type:phrase))))),linked:!t,query:(match_all:()),uiState:(mapCenter:!(37.508908816149834,-42.978172302246094),mapZoom:4),vis:(aggs:!((enabled:!t,id:'1',params:(),schema:metric,type:count),(enabled:!t,id:'2',params:(autoPrecision:!t,field:ip_addr.geoip,precision:2,useGeocentroid:!f),schema:segment,type:geohash_grid)),listeners:(),params:(addTooltip:!t,heatBlur:15,heatMaxZoom:0,heatMinOpacity:0.1,heatRadius:25,isDesaturated:!f,legendPosition:bottomright,mapCenter:!(0,0),mapType:'Scaled+Circle+Markers',mapZoom:2,wms:(enabled:!f,options:(attribution:'Maps+provided+by+USGS',format:image%2Fpng,layers:'0',styles:'',transparent:!t,version:'1.3.0'),url:'https:%2F%2Fbasemap.nationalmap.gov%2Farcgis%2Fservices%2FUSGSTopo%2FMapServer%2FWMSServer')),title:visualize_map_ips,type:tile_map))"
+                height="600" width="100%"></iframe>
+        </div>
+    </div>
+</div>

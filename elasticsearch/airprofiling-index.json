@@ -1,0 +1,163 @@
+PUT airprofiling
+{
+    "settings" : {
+        "index" : {
+            "number_of_shards" : 3,
+            "number_of_replicas" : 2
+        }
+    },
+
+    "mappings" : {
+        "pcap":{
+            "_parent" : {
+                "type": "target"
+            },
+            "properties" : {
+                "init_time" : {
+                    "type": "date",
+                    "format": "strict_date_optional_time||epoch_millis"
+                },
+                "end_time" : {
+                    "type": "date",
+                    "format": "strict_date_optional_time||epoch_millis"
+                },
+                "mac" : {"type": "text"},
+                "mac_ap" : {"type": "text"},
+                "size" : {"type": "integer"},
+                "packet_amount" : {"type": "integer"},
+                "tcp_size" : {"type": "integer"},
+                "udp_size" : {"type": "integer"},
+                "network_sizes" : {
+                    "type": "nested",
+                    "properties" : {
+                        "protocol" : {"type": "text"},
+                        "size" : {"type": "integer"}
+                    }
+                },
+                "transport_sizes" : {
+                    "properties" : {
+                        "protocol" : {"type": "text"},
+                        "size" : {"type": "integer"},
+                        "ports" : {
+                            "type": "nested",
+                            "include_in_parent": true,
+                            "properties":{
+                                "protocol" : {"type": "keyword"},
+                                "port_number" : {"type": "integer"},
+                                "size" : {"type": "integer"}
+                            }
+                        }
+                    }
+                },
+                "protocol" : {
+                    "type": "nested",
+                    "properties" : {
+                        "name" : {"type" : "text"},
+                        "ips" : { "type" : "ip" }
+
+                    }
+                }
+            }
+        },
+
+        "target": {
+            "_parent":{
+                "type": "devices"
+            },
+            "properties" : {
+                "@timestamp" : {
+                    "type": "date",
+                    "format": "strict_date_optional_time||epoch_millis"
+                },
+                "last_timestamp" : {
+                    "type": "date",
+                    "format": "strict_date_optional_time||epoch_millis"
+                },
+                "device" : {"type": "keyword"},
+                "brand" : {"type": "keyword"},
+                "mac" : {"type": "text"},
+                "email" : {"type": "text"},
+                "telephone" : {"type": "text"},
+                "ip_addr" : {
+                    "type": "nested",
+                    "include_in_parent": true,
+                    "properties": {
+                        "ip": { "type" : "ip" },
+                        "geoip": { "type" : "geo_point" },
+                        "country": { "type" : "keyword" },
+                        "city": { "type" : "keyword" },
+                        "description": { "type" : "text" }
+                    }
+                },
+                "browsers": {
+                    "type": "nested",
+                    "include_in_parent": true,
+                    "properties" : {
+                        "family" : {"type": "keyword"},
+                        "version" : {"type": "text"}
+                    }
+                },
+                "webpages": {
+                    "type": "nested",
+                    "include_in_parent": true,
+                    "properties" : {
+                        "protocol" : {"type": "keyword"},
+                        "url" : {"type": "keyword"},
+                        "uri" : {
+                            "type": "nested",
+                            "include_in_parent": true,
+                            "properties" : {
+                                "time" :  {
+                                    "type": "date",
+                                    "format": "strict_date_optional_time||epoch_millis"
+                                },
+                                "uri" : {"type": "keyword"},
+                                "fullurl" : {"type": "keyword"},
+                                "type" : {"type": "keyword"},
+                                "protocol" : {"type": "keyword"}
+                            }
+                        }
+                    }
+                },
+                "apps" : {
+                    "type": "nested",
+                    "include_in_parent": true,
+                    "properties" : {
+                        "time" : {
+                            "type": "date",
+                            "format": "strict_date_optional_time||epoch_millis"
+                        },
+                        "name" : {"type": "keyword"},
+                        "version" : {"type": "keyword"},
+                        "discovered" : {"type": "text"}
+                    }
+                },
+                "os_family" : { "type": "keyword" },
+                "os_version" : { "type": "keyword" }
+            }
+        },
+
+        "devices": {
+            "properties" : {
+                "device" : {"type": "keyword"},
+                "model" : {"type": "keyword"},
+                "brand" : {"type": "keyword"},
+                "image" : {"type": "text"},
+                "is_tablet" : {"type": "boolean"},
+                "is_mobile" : {"type": "boolean"},
+                "is_pc" : {"type": "boolean"},
+                "device_data" : {"type" : "nested"}
+            }
+        },
+
+        "apps" : {
+            "properties" : {
+                "name" : {"type": "keyword"},
+                "company" : {"type": "keyword"},
+                "image" : {"type": "text"},
+                "user_agents" : {"type": "text"},
+                "ips" : {"type": "ip"}
+            }
+        }
+    }
+}

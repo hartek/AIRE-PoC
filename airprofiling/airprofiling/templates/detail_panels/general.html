@@ -1,0 +1,169 @@
+{% block personal_data %}
+{% if name or telephone or email %}
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div class="widget widget-default widget-item-icon" onclick="location.href='/airprofiling/list';">
+            <div class="widget-item-left" style="color: #1997c6">
+                <span class="fa fa-user"></span>
+            </div>
+            <div class="widget-data">
+                {% if name %}<div class="widget-title">Nombre: {{name}}</div>{% endif %}
+                {% if telephone %}<div class="widget-title">Teléfono: {{telephone}}</div>{% endif %}
+                {% if email %}<div class="widget-title">Email: {{email}}</div>{% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+</div>
+{% endif %}
+{% endblock personal_data %}
+
+{% block device_data %}
+<div class="row">
+    <div class="jumbotron">
+        <h2>Datos del dispositivo</h2>
+        <table class="table table-condensed table-device" style="font-size: 20px;">
+            <tr>
+                <td>
+                    <img src="/static/img/aire_logo_full.png" class="img-rounded foto-detail" alt="Cinque Terre" width="200" height="auto" style="margin-left:60px">
+                </td>
+                <td style="min-width:500px;">
+                    <ul style="text-align:left">
+                        {% if mac %}<li><b>MAC:</b> <span style="text-transform: uppercase">{{mac}}</span></li>{% endif %}
+                        {% if device_brand %}<li><b>Marca:</b> <span>{{device_brand}}</span></li>{% endif %}
+                        {% if device_model %}<li><b>Modelo:</b> <span>{{device_model}}</span></li>{% endif %}
+                        {% if device_name %}<li><b>Nombre del dispositivo:</b> <span>{{device_name}}</span></li>{% endif %}
+                        {% if device_type %}<li><b>Tipo de dispositivo:</b> <span>{{device_type}}</span></li>{% endif %}
+                        {% if device_os %}<li><b>Sistema operativo:</b> <span>{{device_os}}</span></li>{% endif %}
+                        {% if device_browser %}<li><b>Navegador:</b> <span>{{device_browser}}</span></li>{% endif %}
+                    </ul>
+                </td>
+                <td>
+                    <ul style="text-align:left">
+                        {% if device_display %}<li><b>Display:</b> <span>{{device_display}}</span></li>{% endif %}
+                        {% if device_cpu %}<li><b>CPU:</b> <span>{{device_cpu}}</span></li>{% endif %}
+                        {% if device_chipset %}<li><b>Chipset:</b> <span>{{device_chipset}}</span></li>{% endif %}
+                        {% if device_status %}<li><b>Status:</b> <span>{{device_status}}</span></li>{% endif %}
+                        {% if device_dimensions %}<li><b>Dimensiones:</b> <span>{{device_dimensions}}</span></li>{% endif %}
+                        {% if device_weight %}<li><b>Peso:</b> <span>{{device_weight}}</span></li>{% endif %}
+                        {% if device_3g_bands %}<li><b>3g bands:</b> <span>{{device_3g_bands}}</span></li>{% endif %}
+                        {% if device_4g_bands %}<li><b>4g bands:</b> <span>{{device_4g_bands}}</span></li>{% endif %}
+                        {% if device_sensors %}<li><b>Sensores:</b> <span>{{device_sensors}}</span></li>{% endif %}
+                        {% if device_messaging %}<li><b>Messaging:</b> <span>{{device_messaging}}</span></li>{% endif %}
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% endblock device_data %}
+
+<div class="row">
+    {% block apps %}
+    <div class="col-lg-6">
+        <div class="panel panel-primary">
+            <div class = "panel-heading">
+                <h2 class = "panel-title">
+                    Aplicaciones encontradas
+                </h2>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper no-footer">
+                        <table id="apps_table" class="table no-footer table-striped" role="grid">
+                            <thead>
+                                <tr role="row">
+                                    <th>Nombre</th>
+                                    <th>Veces detectada</th>
+                                    <th>Indicios</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for app in apps %}
+                                <tr role="row">
+                                    <td>
+                                        <img width="20" heigth="20" src="/static/img/app_icons/{{app.name|lower}}.png"/>
+                                        &nbsp;
+                                        {{app.name}}
+                                    </td>
+                                    <td>{{app.time|length}}</td>
+                                    <td>
+                                        <ul style="text-align:left">
+                                        {% for method in app.discovered %}
+                                        <li style="list-style-type: none;">{{method}}</li>
+                                        {% endfor %}
+                                        </ul>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock apps %}
+    <div class="col-lg-6">
+        <div class="panel panel-primary">
+            <div class = "panel-heading">
+                <h2 class = "panel-title">
+                    Tipo de contenido explorado
+                </h2>
+            </div>
+            <div class="panel-body">
+                    <iframe src="http://{{kibana_host}}:{{kibana_port}}/app/kibana#/visualize/edit/ed1b1320-8b18-11e7-9aa0-7d4ec2d207b7?embed=true&_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now-20y,mode:quick,to:now))&_a=(filters:!(('$state':(store:appState),meta:(alias:!n,disabled:!f,index:airprofiling,key:_id,negate:!f,type:phrase,value:'{{mac}}'),query:(match:(_id:(query:'{{mac}}',type:phrase))))),linked:!t,query:(match_all:()),uiState:(),vis:(aggs:!((enabled:!t,id:'1',params:(),schema:metric,type:count),(enabled:!t,id:'2',params:(customLabel:'Tipo+de+contenido',field:webpages.uri.type,order:desc,orderBy:'1',size:10),schema:segment,type:terms)),listeners:(),params:(addLegend:!t,addTooltip:!t,isDonut:!t,legendPosition:left),title:donut_terms_of_device,type:pie))"
+                    height="600"
+                    width="100%">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    {% block webpages %}
+    <div class="panel panel-primary">
+        <div class = "panel-heading">
+            <h2 class = "panel-title">
+                Páginas visitadas
+            </h2>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper no-footer">
+                    <table id="webpages_table" class="table no-footer table-striped table-hover" role="grid">
+                        <thead>
+                            <tr role="row">
+                                <th>Protocolo</th>
+                                <th>Dominio</th>
+                                <th>Tipo</th>
+                                <th>Veces visitada / Uris </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for webpage in webpages %}
+                            <tr role="row">
+                                <td>{{webpage.protocol}}</td>
+                                <td>{{webpage.url}}</td>
+                                <td>{{webpage.types}}</td>
+                                <td style="text-align:left">
+                                    <ul>
+                                        {% for uri in webpage.uri %}
+                                        <li>
+                                            [<b>{{uri.times_visited}}</b>] :: <a target="_blank" href="//{{uri.fullurl}}">{{uri.uri}}</a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock webpages %}
+</div>

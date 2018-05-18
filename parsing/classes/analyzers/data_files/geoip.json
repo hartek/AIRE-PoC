@@ -1,0 +1,16 @@
+{
+	"app_geoip": {
+		"Spotify": ["Spotify"],
+		"Facebook": ["Facebook"], 
+		"WhatsApp": ["Softlayer"], 
+		"Twitter": ["Twitter"], 
+		"Telegram": ["Telegram"], 
+		"SoundCloud": ["Soundcloud"], 
+		"Pinterest": ["Pinterest"], 
+		"Netflix": ["Netflix", 
+					"NETFLIX-ASN"], 
+		"Bankia": ["Bankia"], 
+		"ING Direct": ["ING Direct"], 
+		"Banc Sabadell": ["Banco Sabadell"]
+	}
+}

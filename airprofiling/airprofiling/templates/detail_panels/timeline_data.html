@@ -1,0 +1,42 @@
+{% if timeline|length > 0 %}
+<ul class="timeline">             
+    {% for timedata in timeline %}
+    <li class="{{timedata.class}} {{timedata.type}}">
+        <div class="timeline-badge">
+            <a><i class="fa fa-circle{% if timedata.class == 'timeline-inverted' %} invert{% endif %}" id=""></i></a>
+        </div>
+        <div class="timeline-panel">
+            <div class="timeline-heading">
+                {% if timedata.type == 'app' %}
+                <h4>
+                    <img width="30" heigth="30" src="/static/img/app_icons/{{timedata.app_name|lower}}.png"/>
+                    &nbsp;                        
+                    Conexión de la aplicación <b>{{timedata.app_name}}</b>
+                </h4>
+                {% else %}
+                <h4>Conexión con el dominio <a target="_blank" href="//{{timedata.url_dic}}">{{timedata.url_dic}}</a></h4>
+                {% endif %}
+            </div>
+            <div class="timeline-body">
+                {% if timedata.type == 'app' %}                    
+                <p>{{timedata.body}}</p>
+                {% else %}                    
+                <p>Se ha realizado una conexión con <a target="_blank" href="//{{timedata.uri_dic}}">{{timedata.uri_dic_text}}</a>
+                {% if timedata.categorias|length > 0 %}<br/>Categorizado como: <b>{{timedata.categorias}}</b>{% endif %}
+                </p>
+                {% endif %}                    
+            </div>
+            <div class="timeline-footer">
+                <p class="{% if timedata.class == 'timeline-inverted' %}text-left{% else %}text-right{% endif %}">{{timedata.time}}</p>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+    <li class="clearfix no-float"></li>
+</ul>
+{% else %}
+<div class="row">
+    <h4>No se han encontrado resultados</h4>
+</dib>
+{% endif %}
+

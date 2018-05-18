@@ -1,0 +1,31 @@
+{
+	"app_domain": {
+		"Spotify": ["spotify.com","scdn.co"],
+		"Facebook": ["fbcdn.net","facebook.com","fb.com"],
+		"Instagram": ["cdninstagram.com","instagram.com"],
+		"WhatsApp": ["whatsapp.net"],
+		"SoundCloud": ["soundcloud.com"],
+		"Pinterest": ["pinterest.com"],
+		"Wallapop": ["wallapop.com"],
+		"Apple Maps": ["gspe11.ls.apple.com", "gspe19.ls.apple.com"],
+		"Habitaclia": ["habitaclia.com"],
+		"Idealista": ["idealista.com"],
+		"LINE": ["line.me"],
+		"AliExpress": ["aliexpress.com"], 
+		"Amazon": ["amazon.com"], 
+		"BBVA": ["movil.bbva.es", "openapi.bbva.com", "servicios.bbva.es", 
+			"APIM-openbbva-LB-1325968154.eu-west-1.elb.amazonaws.com", "bbva.d3.sc.omtrdc.net",
+			"api.bbva.es", "api.grupobbva.com", "bancamovil.grupobbva.com"],
+		"Bankia": ["m.bankia.es", "smetrics.bankia.es", 
+			"bankia.es.ssl.d3.sc.omtrdc.net", "bankia.es"], 
+		"EspanaDuero": ["mapas.espanaduero.es", "espanaduero.es"], 
+		"EVO Movil": ["serviciosmoviles.evobanco.com"], 
+		"ING Direct": ["metrics.ing.es", "ingdirectspain.demdex.net", "ing.ingdirect.es", 
+			"ing.es.ssl.sc.omtrdc.net", "ing.es"], 
+		"Caixabank": ["webm.caixabank.es", "webm.lacaixa.es", "m.caixabank.es", 
+			"m.lacaixa.es", "m8.lacaixa.es", "m3.lacaixa.es", "app.caixabank.com", 
+			"m6.lacaixa.es", "m3.caixabank.es", "lacaixa.es", "caixabank.es", "caixabank.com"], 
+		"Banc Sabadell": ["bancsabadell.mobi", "ems.bancsabadell.com", "bancsabadell.com"], 
+		"Banco Santander": ["bancosantander.es.edgekey.net", "microsite.bancosantander.es", "bancosantander.es"]
+	}
+}

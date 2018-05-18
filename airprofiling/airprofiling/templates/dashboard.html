@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+    <li><a href="#">Home</a> <span class="divider"></span></li>
+    <li class="active">Dashboard</li>
+{% endblock breadcrumb %}
+
+{% block header-title %}{% endblock header-title %}
+
+{% block main-content %}
+
+
+{% block information %}
+
+<div class="hero-unit">
+  <h1>Airprofiling</h1>
+  <p>Este es el dashboard de la aplicación AirProfiling, una aplicación que sirve para el análisis de pcaps y la obtención de estadísitcas y perfiles de los usuarios de dispositivos móviles</p>
+</div>
+
+
+<div class="row">
+
+    <div class="col-lg-3 col-md-6">
+
+    </div>
+
+    <div class="col-md-3" >
+        <!-- START WIDGET REGISTRED -->
+        <div style="color: #1997c6" class="widget widget-default widget-item-icon" onclick="location.href='/airprofiling/list';">
+            <div class="widget-item-left" style="color: #1997c6">
+                <span class="fa fa-user"></span>
+            </div>
+            <div class="widget-data">
+                <div class="widget-int num-count">{{devicesAnalyzed}}</div>
+                <div class="widget-title">Dispositivos encontrados</div>
+                <div class="widget-subtitle">En la última semana</div>
+            </div>
+        </div>
+        <!-- END WIDGET REGISTRED -->
+    </div>
+
+    <div class="col-md-3" >
+        <!-- START WIDGET MESSAGES -->
+        <div style="color: #1997c6" class="widget widget-default widget-item-icon" onclick="location.href='/airprofiling/list';">
+            <div class="widget-item-left">
+                <span class="fa fa-envelope"></span>
+            </div>
+            <div class="widget-data">
+                <div class="widget-int num-count">{{packetsAnalyzed}}</div>
+                <div class="widget-title">Paquetes analizados</div>
+                <div class="widget-subtitle">En la última semana</div>
+            </div>
+        </div>
+        <!-- END WIDGET MESSAGES -->
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+
+    </div>
+
+</div>
+
+{% endblock information %}
+
+
+<div class="row">
+    <div class="col-lg-6 col-md-8 col-sm-8">
+        <div class = "panel panel-primary">
+            <div class = "panel-heading">
+                <h2 class = "panel-title">
+                    Aplicaciones encontradas
+                </h2>
+            </div>
+
+            <div class = "panel-body">
+                <iframe src="http://{{kibana_host}}:{{kibana_port}}/app/kibana#/visualize/edit/b41d9270-8869-11e7-9d86-9fe2027f7320?embed=true&_g=(refreshInterval%3A(display%3AOff%2Cpause%3A!f%2Cvalue%3A0)%2Ctime%3A(from%3Anow-20y%2Cmode%3Aquick%2Cto%3Anow))" height="500px" width="100%"></iframe>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-6 col-md-8 col-sm-8">
+        <div class = "panel panel-primary">
+            <div class = "panel-heading">
+                <h2 class = "panel-title">
+                    Sistemas operativos encontrados
+                </h2>
+            </div>
+
+            <div class = "panel-body">
+                <iframe src="http://{{kibana_host}}:{{kibana_port}}/app/kibana#/visualize/edit/9ab9a200-86bc-11e7-a547-31abb0982743?embed=true&_g=(refreshInterval%3A(display%3AOff%2Cpause%3A!f%2Cvalue%3A0)%2Ctime%3A(from%3Anow-20y%2Cmode%3Aquick%2Cto%3Anow))" height="500px" width="100%"></iframe>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-lg-6 col-md-8 col-sm-8">
+        <div class = "panel panel-primary">
+            <div class = "panel-heading">
+                <h2 class = "panel-title">
+                    Urls navegadas
+                </h2>
+            </div>
+
+            <div class = "panel-body">
+                <iframe src="http://{{kibana_host}}:{{kibana_port}}/app/kibana#/visualize/edit/ea6d3c40-876a-11e7-8035-a74026041c8c?embed=true&_g=(refreshInterval%3A(display%3AOff%2Cpause%3A!f%2Cvalue%3A0)%2Ctime%3A(from%3Anow-20y%2Cmode%3Aquick%2Cto%3Anow))" height="500px" width="100%"></iframe>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-6 col-md-8 col-sm-8">
+        <div class = "panel panel-primary">
+            <div class = "panel-heading">
+                <h2 class = "panel-title">
+                    Categorías de webs más comunes
+                </h2>
+            </div>
+
+            <div class = "panel-body">
+                <iframe src="http://{{kibana_host}}:{{kibana_port}}/app/kibana#/visualize/edit/149fec40-886c-11e7-9d86-9fe2027f7320?embed=true&_g=(refreshInterval%3A(display%3AOff%2Cpause%3A!f%2Cvalue%3A0)%2Ctime%3A(from%3Anow-20y%2Cmode%3Aquick%2Cto%3Anow))" height="500px" width="100%"></iframe>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class = "panel panel-primary">
+    <div class = "panel-heading">
+        <h2 class = "panel-title">
+            Localización de los servidores
+        </h2>
+    </div>
+
+    <div class = "panel-body">
+            <iframe src="http://{{kibana_host}}:{{kibana_port}}/app/kibana#/visualize/edit/203964f0-86be-11e7-a3af-7b71d217498a?embed=true&_g=(refreshInterval%3A(display%3AOff%2Cpause%3A!f%2Cvalue%3A0)%2Ctime%3A(from%3Anow-20y%2Cmode%3Aquick%2Cto%3Anow))" height="600" width="100%"></iframe>
+    </div>
+</div>
+
+{% endblock main-content %}

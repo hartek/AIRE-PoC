@@ -1,0 +1,24 @@
+{
+	"app_ua": {
+		"Spotify": ["Spotify"],
+		"Facebook": ["facebook", "Facebook"],
+		"Instagram": ["instagram", "Instagram"],
+		"Facebook Messenger": ["orca","MessengerForiOS"],
+		"SoundCloud": ["SoundCloud"],
+		"WhatsApp": ["whatsapp", "WhatsApp","WAChat"],
+		"Chrome": ["Chrome" ],
+		"Firefox": ["Firefox"],
+		"Pinterest": ["Pinterest"],
+		"Wallapop": ["Wallapop"],
+		"Atresplayer": ["Atresplayer"],
+		"Apple Maps": ["com.apple.Maps"],
+		"Safari": ["com.apple.mobilesafari"],
+		"Netflix": ["netflix"],
+		"Habitaclia": ["Habitaclia"],
+		"Idealista": ["idealista"],
+		"LINE": ["LINE"],
+		"Samsung Browser": ["SamsungBrowser"],  
+		"AliExpress": ["AliExpress"], 
+		"Amazon": ["Amazon"]
+	}
+}
