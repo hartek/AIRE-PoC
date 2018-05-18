@@ -3,6 +3,7 @@
 ## Authors
 
 Guillermo Román Ferrero @hartek
+
 Javier Gutiérrez Navío @megavexus
 
 ## Abstract
